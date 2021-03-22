@@ -2,7 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
+	<!-- Arm_Left arm_Left = new Arm_Left() -->
+	<bean class="com.iu.s2.robot.Arm_Left" id="arm_Left">
+	</bean>
+	<!-- Arm_Rigth arm_Rigtht = new Arm_Right() -->
+	<bean class="com.iu.s2.robot.Arm_Right" id="arm_Right"></bean>
+
+	<!-- Robot 객체 생성 Robot robot = new Robot(); -->
+	<bean class="com.iu.s2.robot.Robot" id="robot"> <!-- 기본생성자 호출 코드 -->
+		<!-- Setter 사용 -->
+		<property name="arm_Left" ref="arm_Left"></property>
+		<property name="arm_Right" ref="arm_Right"></property>
+		<!-- 생성자 사용 -->
+		<constructor-arg name="age" value="20"></constructor-arg>
+		<constructor-arg name="name" value="iu"></constructor-arg>
+		<constructor-arg name="price" value="200"></constructor-arg>
+
+		<constructor-arg index="0" value="20"></constructor-arg>
+		<constructor-arg index="1" value="iu"></constructor-arg>
+		<constructor-arg index="2" value="200"></constructor-arg>
+
+		<constructor-arg type="int"></constructor-arg>
+
+	</bean>
+
+
 </beans>
